@@ -10,7 +10,6 @@ techCards.forEach(card => {
     });
 });
 
-
 const revealElements = document.querySelectorAll('.reveal');
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -25,3 +24,9 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 });
 
 revealElements.forEach(el => revealObserver.observe(el));
+
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
+});
